@@ -2,6 +2,7 @@
 
 var assert = require('assert')
 
+var isNumber = require('101/is-number')
 var isPositiveInteger = require('is-positive-integer')
 
 var characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
@@ -15,7 +16,8 @@ module.exports = {
 }
 
 function encode (base10) {
-  assert(base10 === 0 || isPositiveInteger(base10), 'encode: invalid base10 (not a number)')
+  assert(isNumber(base10), 'encode: invalid base10 (not a number)')
+  assert(base10 === 0 || isPositiveInteger(base10), 'encode: number not supported (must be a positive integer or zero)')
   var str = (base10 === 0)
     ? '0'
     : ''

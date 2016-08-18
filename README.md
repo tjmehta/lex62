@@ -34,6 +34,8 @@ lex62.encode(238327) // 'Czzz'
 // errors
 lex62.encode('yo')
 // throws [AssertionError: 'encode: invalid base10 (not a number)']
+lex62.encode(-10)
+// throws [AssertionError: 'encode: number not supported (must be a positive integer or zero)']
 lex62.encode(1e90)
 // throws [AssertionError: 'encode: number not supported (too large)']
 ```

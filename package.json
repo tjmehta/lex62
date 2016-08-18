@@ -44,6 +44,7 @@
     "mocha": "^3.0.2"
   },
   "dependencies": {
+    "101": "^1.6.1",
     "is-positive-integer": "^1.1.1"
   }
 }
