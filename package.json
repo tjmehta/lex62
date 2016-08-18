@@ -1,6 +1,6 @@
 {
   "name": "lex62",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Fast, lexicographic base62 encode and decode",
   "main": "index.js",
   "scripts": {
