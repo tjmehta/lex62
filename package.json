@@ -1,0 +1,46 @@
+{
+  "name": "lex62",
+  "version": "0.0.0",
+  "description": "Fast, lexicographic base62 encode and decode",
+  "main": "index.js",
+  "scripts": {
+    "test": "istanbul cover _mocha ./test && istanbul --text check-coverage --statements 100 --functions 100 --branches 100 --lines 100"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tjmehta/lex62.git"
+  },
+  "keywords": [
+    "base62",
+    "alphabetical",
+    "lex",
+    "lexico",
+    "lexicographic",
+    "lexicographical",
+    "order",
+    "sort",
+    "fast",
+    "efficient",
+    "performance",
+    "perf",
+    "encode",
+    "decode",
+    "string",
+    "number",
+    "base",
+    "base10",
+    "62",
+    "10"
+  ],
+  "author": "Tejesh Mehta",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tjmehta/lex62/issues"
+  },
+  "homepage": "https://github.com/tjmehta/lex62#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "istanbul": "^0.4.4",
+    "mocha": "^3.0.2"
+  }
+}
