@@ -34,9 +34,15 @@ describe('lex62', function () {
 
     describe('errors', function () {
       var base10 = [
+        'yo',
+        -10,
+        1.1,
         1e90
       ]
       var errs = [
+        'encode: invalid base10 (not a number)',
+        'encode: number not supported (must be a positive integer or zero)',
+        'encode: number not supported (must be a positive integer or zero)',
         'encode: number not supported (too large)'
       ]
       // generated tests

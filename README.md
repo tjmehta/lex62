@@ -11,7 +11,7 @@ npm i --save lex62
  * lexigraphical order: A < Z < a < z < 0 < 9
  * ensures lexicographical order by appending an alphabetic prefix (based on number of digits).
  * `decode` will only work with base64 numbers that have an expected prefix (alphabetic prefix appended to ensure lexigraphic order).
- * `encode` should work with any number as long as it is not _very_ large ~> 1e90.
+ * `encode` should work with any positive integer (and zero) as long as it is not _very_ large ~> 1e90.
 
 # Usage
 ##### encode
@@ -28,10 +28,14 @@ lex62.encode(61) // 'Az'
 lex62.encode(62) // 'B10'
 lex62.encode(123) // 'B1z'
 lex62.encode(3843) // 'Bzz'
-lex62.encode('3844') // 'C100'
-lex62.encode('238327') // 'Czzz'
+lex62.encode(3844) // 'C100'
+lex62.encode(238327) // 'Czzz'
 
 // errors
+lex62.encode('yo')
+// throws [AssertionError: 'encode: invalid base10 (not a number)']
+lex62.encode(-10)
+// throws [AssertionError: 'encode: number not supported (must be a positive integer or zero)']
 lex62.encode(1e90)
 // throws [AssertionError: 'encode: number not supported (too large)']
 ```
@@ -41,18 +45,18 @@ lex62.encode(1e90)
 ```js
 var lex62 = require('lex62')
 
-lex62.encode('A0) // 0
-lex62.encode('A1) // 1
-lex62.encode('A9) // 9
-lex62.encode('AA) // 10
-lex62.encode('AZ) // 35
-lex62.encode('Aa) // 36
-lex62.encode('Az) // 61
-lex62.encode('B10) // 62
-lex62.encode('B1z) // 123
-lex62.encode('Bzz) // 3843
-lex62.encode('C100) // 3844
-lex62.encode('Czzz) // 238327
+lex62.encode('A0') // 0
+lex62.encode('A1') // 1
+lex62.encode('A9') // 9
+lex62.encode('AA') // 10
+lex62.encode('AZ') // 35
+lex62.encode('Aa') // 36
+lex62.encode('Az') // 61
+lex62.encode('B10') // 62
+lex62.encode('B1z') // 123
+lex62.encode('Bzz') // 3843
+lex62.encode('C100') // 3844
+lex62.encode('Czzz') // 238327
 
 // errors
 lex62.encode('A*')
