@@ -3,6 +3,7 @@
 var assert = require('assert')
 
 var isNumber = require('101/is-number')
+var isString = require('101/is-string')
 var isPositiveInteger = require('is-positive-integer')
 
 var characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
@@ -33,6 +34,7 @@ function encode (base10) {
 
 function decode (base62) {
   // Ensure the revision has expected prefix and is not empty
+  assert(isString(base62), 'decode: invalid base62 (not a string)')
   var base62Char = base62[0]
   assert(base62Char in charMap, 'decode: invalid base62 ("' + base62 + '" not base62)')
   var expectedPrefix = getPrefix(base62.length - 1, 'decode')

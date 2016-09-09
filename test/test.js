@@ -66,6 +66,7 @@ describe('lex62', function () {
 
     describe('errors', function () {
       var base62 = [
+        2,
         '.',
         'A,',
         'B0',
@@ -73,6 +74,7 @@ describe('lex62', function () {
         'zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz'
       ]
       var errs = [
+        'decode: invalid base62 (not a string)',
         'decode: invalid base62 ("." not base62)',
         'decode: invalid base62 ("A," not base62)',
         'decode: number not supported (unexpected prefix)',
