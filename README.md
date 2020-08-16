@@ -45,27 +45,27 @@ lex62.encode(1e90)
 ```js
 var lex62 = require('lex62')
 
-lex62.encode('A0') // 0
-lex62.encode('A1') // 1
-lex62.encode('A9') // 9
-lex62.encode('AA') // 10
-lex62.encode('AZ') // 35
-lex62.encode('Aa') // 36
-lex62.encode('Az') // 61
-lex62.encode('B10') // 62
-lex62.encode('B1z') // 123
-lex62.encode('Bzz') // 3843
-lex62.encode('C100') // 3844
-lex62.encode('Czzz') // 238327
+lex62.decode('A0') // 0
+lex62.decode('A1') // 1
+lex62.decode('A9') // 9
+lex62.decode('AA') // 10
+lex62.decode('AZ') // 35
+lex62.decode('Aa') // 36
+lex62.decode('Az') // 61
+lex62.decode('B10') // 62
+lex62.decode('B1z') // 123
+lex62.decode('Bzz') // 3843
+lex62.decode('C100') // 3844
+lex62.decode('Czzz') // 238327
 
 // errors
-lex62.encode('A*')
+lex62.decode('A*')
 // throws [AssertionError: 'decode: invalid base62 ("A*" not base62)']
-lex62.encode('B0')
+lex62.decode('B0')
 // throws [AssertionError: 'decode: number not supported (unexpected prefix)']
-lex62.encode('B00')
+lex62.decode('B00')
 // throws [AssertionError: 'decode: number not supported (unexpected zero)']
-lex62.encode('zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz')
+lex62.decode('zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz')
 // throws [AssertionError: 'decode: number not supported (too large)']
 ```
 
