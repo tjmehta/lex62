@@ -16,56 +16,56 @@ npm i --save lex62
 # Usage
 ##### encode
 ```js
-var lex62 = require('lex62')
+import { encode, decode } from 'lex62';
 
-lex62.encode(0) // 'A0'
-lex62.encode(1) // 'A1'
-lex62.encode(9) // 'A9'
-lex62.encode(10) // 'AA'
-lex62.encode(35) // 'AZ'
-lex62.encode(36) // 'Aa'
-lex62.encode(61) // 'Az'
-lex62.encode(62) // 'B10'
-lex62.encode(123) // 'B1z'
-lex62.encode(3843) // 'Bzz'
-lex62.encode(3844) // 'C100'
-lex62.encode(238327) // 'Czzz'
+.encode(0) // 'A0'
+.encode(1) // 'A1'
+.encode(9) // 'A9'
+.encode(10) // 'AA'
+.encode(35) // 'AZ'
+.encode(36) // 'Aa'
+.encode(61) // 'Az'
+.encode(62) // 'B10'
+.encode(123) // 'B1z'
+.encode(3843) // 'Bzz'
+.encode(3844) // 'C100'
+.encode(238327) // 'Czzz'
 
 // errors
-lex62.encode('yo')
+.encode('yo')
 // throws [AssertionError: 'encode: invalid base10 (not a number)']
-lex62.encode(-10)
+.encode(-10)
 // throws [AssertionError: 'encode: number not supported (must be a positive integer or zero)']
-lex62.encode(1e90)
+.encode(1e90)
 // throws [AssertionError: 'encode: number not supported (too large)']
 ```
 
 ##### decode
 * decode only works w/ base62 numbers which follow the format outputted by encode.
 ```js
-var lex62 = require('lex62')
+import { encode, decode } from '';
 
-lex62.decode('A0') // 0
-lex62.decode('A1') // 1
-lex62.decode('A9') // 9
-lex62.decode('AA') // 10
-lex62.decode('AZ') // 35
-lex62.decode('Aa') // 36
-lex62.decode('Az') // 61
-lex62.decode('B10') // 62
-lex62.decode('B1z') // 123
-lex62.decode('Bzz') // 3843
-lex62.decode('C100') // 3844
-lex62.decode('Czzz') // 238327
+.decode('A0') // 0
+.decode('A1') // 1
+.decode('A9') // 9
+.decode('AA') // 10
+.decode('AZ') // 35
+.decode('Aa') // 36
+.decode('Az') // 61
+.decode('B10') // 62
+.decode('B1z') // 123
+.decode('Bzz') // 3843
+.decode('C100') // 3844
+.decode('Czzz') // 238327
 
 // errors
-lex62.decode('A*')
+.decode('A*')
 // throws [AssertionError: 'decode: invalid base62 ("A*" not base62)']
-lex62.decode('B0')
+.decode('B0')
 // throws [AssertionError: 'decode: number not supported (unexpected prefix)']
-lex62.decode('B00')
+.decode('B00')
 // throws [AssertionError: 'decode: number not supported (unexpected zero)']
-lex62.decode('zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz')
+.decode('zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz')
 // throws [AssertionError: 'decode: number not supported (too large)']
 ```
 
