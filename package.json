@@ -2,9 +2,24 @@
   "name": "lex62",
   "version": "1.0.2",
   "description": "Fast, lexicographic base62 encode and decode",
-  "main": "index.js",
+  "main": "dist/cjs/index.cjs",
+  "module": "dist/esm/index.mjs",
+  "types": "dist/esm/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.cjs",
+      "import": "./dist/esm/index.mjs",
+      "types": "./dist/esm/index.d.ts"
+    }
+  },
   "scripts": {
-    "test": "istanbul cover _mocha ./test && istanbul --text check-coverage --statements 100 --functions 100 --branches 100 --lines 100"
+    "prepublish": "npm run build",
+    "build": "npm run build-ts && npm run _build_esm_rename && npm run _build_cjs_rename",
+    "build-ts": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
+    "_build_esm_rename": "rewrite-esm dist/esm",
+    "_build_cjs_rename": "rewrite-cjs dist/cjs",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -39,12 +54,22 @@
   },
   "homepage": "https://github.com/tjmehta/lex62#readme",
   "devDependencies": {
-    "chai": "^3.5.0",
-    "istanbul": "^0.4.4",
-    "mocha": "^3.0.2"
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-typescript": "^7.26.0",
+    "@types/jest": "^29.5.14",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "mocha": "^3.0.2",
+    "prettier": "^3.4.2",
+    "rewrite-cjs-esm-paths": "^1.0.3",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.7.2"
   },
   "dependencies": {
     "101": "^1.6.1",
+    "baseerr": "^2.0.6",
     "is-positive-integer": "^1.1.1"
   }
 }
