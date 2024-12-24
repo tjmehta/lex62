@@ -3,13 +3,6 @@ export default {
   // Use the ESM preset for TypeScript
   preset: 'ts-jest/presets/default-esm',
 
-  // Tell Jest to handle ESM modules
-  globals: {
-    'ts-jest': {
-      useESM: true,
-    },
-  },
-
   // Include extensions to treat as ESM
   extensionsToTreatAsEsm: ['.ts', '.tsx'],
 
