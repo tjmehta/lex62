@@ -1,6 +1,6 @@
 {
   "name": "lex62",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Fast, lexicographic base62 encode and decode",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
